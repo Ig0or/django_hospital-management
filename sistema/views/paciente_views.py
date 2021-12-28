@@ -8,7 +8,8 @@ def cadastrar_paciente(request):
         dados_cep = cep_service.consulta_cep(cep)
         form_paciente = paciente_forms.Paciente(request.POST)
         form_endereco = endereco_forms.Endereco(request.POST)
-        print(form_endereco)
+        if form_paciente.is_valid():
+            print('TESTE')
     else:
         form_paciente = paciente_forms.Paciente()
         form_endereco = endereco_forms.Endereco()

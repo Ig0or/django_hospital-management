@@ -4,7 +4,7 @@ from django.db.models.fields.related import ForeignKey
 class Endereco(models.Model):
     cep = models.CharField(max_length=8, null=False, blank=False)
     rua = models.CharField(max_length=100, null=False, blank=False)
-    numero = models.IntegerField(max_length=5, null=False, blank=False)
+    numero = models.CharField(max_length=5, null=False, blank=False)
     complemento = models.CharField(max_length=30, blank=True, null=True)
     bairro = models.CharField(max_length=20, null=False, blank=False)
     cidade = models.CharField(max_length=20, null=False, blank=False)
