@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load filtros %}
+
+{% block title %}
+    Hospital - Lista de Pacientes
+{% endblock title %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Lista de Pacientes</h3>
+        </div>
+        
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Data de Nascimento</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                </tr>
+                <tr>
+                    {% for paciente in pacientes %}
+                    <td>{{ paciente.id }}</td>
+                    <td>{{ paciente.nome }}</td>
+                    <td>{{ paciente.cpf }}</td>
+                    <td>{{ paciente.data_nascimento }}</td>
+                    <td>{{ paciente.email }}</td>
+                    <td>{{ paciente.telefone }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock content %}

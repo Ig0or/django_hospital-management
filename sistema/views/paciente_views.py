@@ -7,6 +7,7 @@ def cadastrar_paciente(request):
     if request.method == 'POST':
         cep = request.POST['cep']
         dados_cep = cep_service.consulta_cep(cep)
+
         form_paciente = paciente_forms.Paciente(request.POST)
         form_endereco = endereco_forms.Endereco(request.POST)
         if form_paciente.is_valid():
@@ -30,10 +31,14 @@ def cadastrar_paciente(request):
 
                 paciente_novo = paciente.Paciente(nome=nome, data_nascimento=data_nascimento, email=email, telefone=telefone, cpf=cpf, profissao=profissao, endereco=endereco_bd)
                 paciente_service.cadastrar_paciente(paciente_novo)
-
+                redirect('lista_pacientes')
     else:
         form_paciente = paciente_forms.Paciente()
         form_endereco = endereco_forms.Endereco()
         dados_cep = ''
     return render(request, 'paciente/form_paciente.html', {'form_paciente': form_paciente, 'form_endereco': form_endereco, 'dados_cep': dados_cep})
 
+
+def listar_pacientes(request):
+    pacientes = paciente_service.listar_pacientes()
+    return render(request, 'paciente/lista_pacientes.html', {'pacientes': pacientes})
