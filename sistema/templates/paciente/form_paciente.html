@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load filtros %}
+
+{% block title %}
+    Hospital - Cadastro de Pacientes
+{% endblock title %}
+
+{% block content %}
+    <h2>Dados Endereço</h2>
+
+    {% if not dados_cep %}
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{ form_endereco.cep.errors }}
+            <label for="id_cep">CEP:</label>
+            {{ form_endereco.cep }}
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        {% if dados_cep %}
+        <div>
+            {{ form_endereco.cep.errors }}
+            <label for="id_cep">CEP:</label>
+            {{ form_endereco.cep | addvalue:dados_cep.cep }}
+        </div>
+
+        <div>
+            {{ form_endereco.rua.errors }}
+            <label for="id_rua">Rua:</label>
+            {{ form_endereco.rua | addvalue:dados_cep.logradouro }}
+        </div>
+
+        <div>
+            {{ form_endereco.bairro.errors }}
+            <label for="id_bairro">Bairro:</label>
+            {{ form_endereco.bairro | addvalue:dados_cep.bairro}}
+        </div>
+
+        <div>
+            {{ form_endereco.cidade.errors }}
+            <label for="id_cidade">Cidade:</label>
+            {{ form_endereco.cidade | addvalue:dados_cep.localidade}}
+        </div>
+
+        <div>
+            {{ form_endereco.estado.errors }}
+            <label for="id_estado">Estado:</label>
+            {{ form_endereco.estado | addvalue:dados_cep.uf }}
+        </div>
+
+        {% else %}
+        <div>
+            {{ form_endereco.rua.errors }}
+            <label for="id_rua">Rua:</label>
+            {{ form_endereco.rua }}
+        </div>
+
+        <div>
+            {{ form_endereco.bairro.errors }}
+            <label for="id_bairro">Bairro:</label>
+            {{ form_endereco.bairro }}
+        </div>
+
+        <div>
+            {{ form_endereco.cidade.errors }}
+            <label for="id_cidade">Cidade:</label>
+            {{ form_endereco.cidade }}
+        </div>
+
+        <div>
+            {{ form_endereco.estado.errors }}
+            <label for="id_estado">Estado:</label>
+            {{ form_endereco.estado }}
+        </div>
+        {% endif %}
+
+        <div>
+            {{ form_endereco.numero.errors }}
+            <label for="id_numero">Numero:</label>
+            {{ form_endereco.numero }}
+        </div>
+        
+        <div>
+            {{ form_endereco.complemento.errors }}
+            <label for="id_complemento">Complemento:</label>
+            {{ form_endereco.complemento }}
+        </div>
+
+        <hr>
+
+        <h2>Dados Paciente</h2>
+
+         <div>
+            {{ form_paciente.nome.errors }}
+            <label for="id_nome">Nome:</label>
+            {{ form_paciente.nome }}
+        </div>
+        <div>
+            {{ form_paciente.cpf.errors }}
+            <label for="id_cpf">CPF:</label>
+            {{ form_paciente.cpf }}
+        </div>
+        <div>
+            {{ form_paciente.data_nascimento.errors }}
+            <label for="id_data_nascimento">Data de Nascimento:</label>
+            {{ form_paciente.data_nascimento }}
+        </div>
+        <div>
+            {{ form_paciente.email.errors }}
+            <label for="id_email">E-mail:</label>
+            {{ form_paciente.email }}
+        </div>
+        <div>
+            {{ form_paciente.telefone.errors }}
+            <label for="id_telefone">Telefone:</label>
+            {{ form_paciente.telefone }}
+        </div>
+        <div>
+            {{ form_paciente.profissao.errors }}
+            <label for="id_profissao">Profissao:</label>
+            {{ form_paciente.profissao }}
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+
+        
+
+{% endblock content %}
+
