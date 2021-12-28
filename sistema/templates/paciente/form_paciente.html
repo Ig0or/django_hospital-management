@@ -15,7 +15,7 @@
             {{ form_endereco.cep.errors }}
             <label for="id_cep">CEP:</label>
             {{ form_endereco.cep }}
-            <button type="submit">Enviar</button>
+            <button type="submit">Consultar CEP</button>
         </div>
     </form>
     {% endif %}
@@ -49,28 +49,6 @@
             {{ form_endereco.estado | addvalue:dados_cep.uf }}
         </div>
 
-        {% else %}
-        <div>
-            <label for="id_rua">Rua:</label>
-            {{ form_endereco.rua }}
-        </div>
-
-        <div>
-            <label for="id_bairro">Bairro:</label>
-            {{ form_endereco.bairro }}
-        </div>
-
-        <div>
-            <label for="id_cidade">Cidade:</label>
-            {{ form_endereco.cidade }}
-        </div>
-
-        <div>
-            <label for="id_estado">Estado:</label>
-            {{ form_endereco.estado }}
-        </div>
-        {% endif %}
-
         <div>
             <label for="id_numero">Numero:</label>
             {{ form_endereco.numero }}
@@ -80,6 +58,10 @@
             <label for="id_complemento">Complemento:</label>
             {{ form_endereco.complemento }}
         </div>
+
+        {% endif %}
+
+
 
         <hr>
 
@@ -116,7 +98,9 @@
         </div>
         <hr>
 
-        <button type="submit">Enviar</button>
+        {% if dados_cep %}
+            <button type="submit">Enviar Dados</button>
+        {% endif %}
     </form>
 
 {% endblock content %}
