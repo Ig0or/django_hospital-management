@@ -5,3 +5,18 @@ register = template.Library()
 @register.filter(name='addvalue')
 def addvalue(value, arg):
     return value.as_widget(attrs={'value': arg})
+
+@register.filter(name='formatcpf')
+def formatcpf(value):
+    cpf = []
+    for index, numero in enumerate(value):
+        if index == 3 or index == 6:
+            cpf.append('.')
+            cpf.append(numero)
+        elif index == 9:
+            cpf.append('-')
+            cpf.append(numero)
+        else:
+            cpf.append(numero)
+    cpf = ''.join(cpf)
+    return cpf
