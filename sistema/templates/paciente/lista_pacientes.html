@@ -28,7 +28,7 @@
                     <td>{{ paciente.cpf | formatcpf }}</td>
                     <td>{{ paciente.data_nascimento }}</td>
                     <td>{{ paciente.email }}</td>
-                    <td>{{ paciente.telefone }}</td>
+                    <td>{{ paciente.telefone | formatphone }}</td>
                     {% endfor %}
                 </tr>
             </table>
