@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load filtros %}
+
+{% block title %}
+    Hospital - {{ paciente.nome | title}}
+{% endblock title %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h3 class="profile-username text-center">
+                {{paciente.nome | title }}
+            </h3>
+            <p class="text-muted text-center">
+                CPF: {{ paciente.cpf | formatcpf }}
+            </p>
+
+            <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    <b>Data de Nascimento</b>
+                    <span class="float-right">{{ paciente.data_nascimento }}</span>
+                </li>
+                <li class="list-group-item">
+                    <b>E-mail</b>
+                    <span class="float-right">{{ paciente.email }}</span>
+                </li>
+                <li class="list-group-item">
+                    <b>Telefone</b>
+                    <span class="float-right">{{ paciente.telefone | formatphone }}</span>
+                </li>
+                <li class="list-group-item">
+                    <b>Profissão</b>
+                    <span class="float-right">{{ paciente.profissao | title }}</span>
+                </li>
+                <li class="list-group-item">
+                    <b>CEP</b>
+                    <span class="float-right">{{ paciente.endereco.cep | formatcep }}</span>
+                </li>
+                <li class="list-group-item">
+                    <b>Rua</b>
+                    <span class="float-right">{{ paciente.endereco.rua }}</span>
+                </li>
+                <li class="list-group-item">
+                    <b>Número</b>
+                    <span class="float-right">{{ paciente.endereco.numero }}</span>
+                </li>
+                {% if paciente.endereco.complemento != None%}
+                    <li class="list-group-item">
+                        <b>Complemento</b>
+                        <span class="float-right">{{ paciente.endereco.complemento }}</span>
+                    </li>
+                {% endif %}
+                <li class="list-group-item">
+                    <b>Bairro</b>
+                    <span class="float-right">{{ paciente.endereco.bairro }}</span>
+                </li>
+                <li class="list-group-item">
+                    <b>Cidade</b>
+                    <span class="float-right">{{ paciente.endereco.cidade }}</span>
+                </li>
+                <li class="list-group-item">
+                    <b>Estado</b>
+                    <span class="float-right">{{ paciente.endereco.estado }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

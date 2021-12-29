@@ -24,8 +24,8 @@
                 </tr>
                 {% for paciente in pacientes %}
                     <tr>
-                        <td>{{ paciente.id }}</td>
-                        <td>{{ paciente.nome }}</td>
+                        <td><a href="{% url 'lista_paciente_id' paciente.id %}">{{ paciente.id }}</a></td>
+                        <td>{{ paciente.nome | title }}</td>
                         <td>{{ paciente.cpf | formatcpf }}</td>
                         <td>{{ paciente.data_nascimento }}</td>
                         <td>{{ paciente.email }}</td>

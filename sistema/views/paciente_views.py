@@ -43,3 +43,8 @@ def listar_pacientes(request):
     pacientes = paciente_service.listar_pacientes()
     print(pacientes)
     return render(request, 'paciente/lista_pacientes.html', {'pacientes': pacientes})
+
+
+def listar_paciente_id(request, id):
+    paciente = paciente_service.listar_paciente_id  (id)
+    return render(request, 'paciente/lista_paciente.html', {'paciente': paciente})

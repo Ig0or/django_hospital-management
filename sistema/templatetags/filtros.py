@@ -42,3 +42,16 @@ def formatphone(value):
             telefone.append(numero)
     telefone = ''.join(telefone)
     return telefone
+
+
+@register.filter(name='formatcep')
+def formatcep(value):
+    cep = []
+    for index, numero in enumerate(value):
+        if index == 5:
+            cep.append('-')
+            cep.append(numero)
+        else:
+            cep.append(numero)
+    cep = ''.join(cep)
+    return cep
