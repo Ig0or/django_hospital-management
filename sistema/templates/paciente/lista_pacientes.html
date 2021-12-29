@@ -20,6 +20,7 @@
                     <th>Data de Nascimento</th>
                     <th>E-mail</th>
                     <th>Telefone</th>
+                    <th>Ações</th>
                 </tr>
                 {% for paciente in pacientes %}
                     <tr>
@@ -29,6 +30,10 @@
                         <td>{{ paciente.data_nascimento }}</td>
                         <td>{{ paciente.email }}</td>
                         <td>{{ paciente.telefone | formatphone}}</td>
+                        <td>
+                            <a href=""><button class="btn btn-primary">Editar</button></a>
+                            <a href=""><button class="btn btn-danger">Remover</button></a>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
