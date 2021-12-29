@@ -40,8 +40,5 @@ def formatphone(value):
             telefone.append(numero)
         else:
             telefone.append(numero)
-    print(telefone)
     telefone = ''.join(telefone)
     return telefone
-
-# (11) 96172-5837

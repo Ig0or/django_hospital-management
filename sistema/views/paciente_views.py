@@ -31,7 +31,7 @@ def cadastrar_paciente(request):
 
                 paciente_novo = paciente.Paciente(nome=nome, data_nascimento=data_nascimento, email=email, telefone=telefone, cpf=cpf, profissao=profissao, endereco=endereco_bd)
                 paciente_service.cadastrar_paciente(paciente_novo)
-                redirect('lista_pacientes')
+                return redirect('lista_pacientes')
     else:
         form_paciente = paciente_forms.Paciente()
         form_endereco = endereco_forms.Endereco()
@@ -41,4 +41,5 @@ def cadastrar_paciente(request):
 
 def listar_pacientes(request):
     pacientes = paciente_service.listar_pacientes()
+    print(pacientes)
     return render(request, 'paciente/lista_pacientes.html', {'pacientes': pacientes})

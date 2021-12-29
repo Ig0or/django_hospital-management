@@ -21,19 +21,20 @@
                     <th>E-mail</th>
                     <th>Telefone</th>
                 </tr>
-                <tr>
-                    {% for paciente in pacientes %}
-                    <td>{{ paciente.id }}</td>
-                    <td>{{ paciente.nome }}</td>
-                    <td>{{ paciente.cpf | formatcpf }}</td>
-                    <td>{{ paciente.data_nascimento }}</td>
-                    <td>{{ paciente.email }}</td>
-                    <td>{{ paciente.telefone | formatphone }}</td>
-                    {% endfor %}
-                </tr>
+                {% for paciente in pacientes %}
+                    <tr>
+                        <td>{{ paciente.id }}</td>
+                        <td>{{ paciente.nome }}</td>
+                        <td>{{ paciente.cpf | formatcpf }}</td>
+                        <td>{{ paciente.data_nascimento }}</td>
+                        <td>{{ paciente.email }}</td>
+                        <td>{{ paciente.telefone | formatphone}}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
     </div>
 
+    <a href="{% url 'cadastrar_paciente' %}"><button class="btn btn-primary">Cadastrar Paciente</button></a>
 
 {% endblock content %}
