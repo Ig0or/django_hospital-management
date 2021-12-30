@@ -1,0 +1,21 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+
+{% block nav_heading %}
+    NAVEGAÇÃO PRINCIPAL
+{% endblock nav_heading %}
+
+{% block nav_links %}
+    <li class="nav-item">
+        <a href="{% url 'cadastrar_paciente' %}" class="nav-link">
+            <i class="nav-icon fas fa-user"></i> 
+            <p>Cadastro de Pacientes</p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="{% url 'lista_pacientes' %}" class="nav-link">
+            <i class="nav-icon fas fa-user"></i> 
+            <p>Lista de Pacientes</p>
+        </a>
+    </li>    
+{% endblock nav_links %}
