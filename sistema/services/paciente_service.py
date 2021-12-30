@@ -15,9 +15,14 @@ def editar_paciente(paciente_antigo, paciente_novo):
     paciente_antigo.endereco = paciente_novo.endereco
     paciente_antigo.save(force_update=True)
 
+
 def listar_pacientes():
     return Paciente.objects.all()
 
 
 def listar_paciente_id(id):
     return Paciente.objects.get(id=id)
+
+
+def remover_paciente(paciente):
+    paciente.delete()

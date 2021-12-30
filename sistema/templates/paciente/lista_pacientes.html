@@ -27,12 +27,12 @@
                         <td><a href="{% url 'lista_paciente_id' paciente.id %}">{{ paciente.id }}</a></td>
                         <td>{{ paciente.nome | title }}</td>
                         <td>{{ paciente.cpf | formatcpf }}</td>
-                        <td>{{ paciente.data_nascimento }}</td>
+                        <td>{{ paciente.data_nascimento | date:'d/m/Y' }}</td>
                         <td>{{ paciente.email }}</td>
-                        <td>{{ paciente.telefone | formatphone}}</td>
+                        <td>{{ paciente.telefone | formatphone }}</td>
                         <td>
-                            <a href=""><button class="btn btn-primary">Editar</button></a>
-                            <a href=""><button class="btn btn-danger">Remover</button></a>
+                            <a href="{% url 'editar_paciente' paciente.id %}"><button class="btn btn-primary">Editar</button></a>
+                            <a href="{% url 'remover_paciente' paciente.id %}"><button class="btn btn-danger">Remover</button></a>
                         </td>
                     </tr>
                 {% endfor %}

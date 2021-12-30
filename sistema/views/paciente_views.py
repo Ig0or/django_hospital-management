@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-
-from sistema.models import Paciente
 from ..forms import paciente_forms, endereco_forms
 from ..services import cep_service, endereco_service, paciente_service
 from ..entidades import endereco, paciente
@@ -12,6 +10,7 @@ def cadastrar_paciente(request):
 
         form_paciente = paciente_forms.Paciente(request.POST)
         form_endereco = endereco_forms.Endereco(request.POST)
+
         if form_paciente.is_valid():
             nome = form_paciente.cleaned_data['nome']
             data_nascimento = form_paciente.cleaned_data['data_nascimento']
@@ -47,6 +46,8 @@ def editar_paciente(request, id):
         dados_cep = cep_service.consulta_cep(cep_input)
 
         paciente_editar = paciente_service.listar_paciente_id(id)
+        paciente_editar.data_nascimento = paciente_editar.data_nascimento.strftime('%Y-%m-%d')
+
         form_paciente = paciente_forms.Paciente(instance=paciente_editar)
         form_endereco = endereco_forms.Endereco(instance=paciente_editar.endereco)
 
@@ -76,6 +77,8 @@ def editar_paciente(request, id):
             return redirect('lista_pacientes')
     else:
         paciente_editar = paciente_service.listar_paciente_id(id)
+        paciente_editar.data_nascimento = paciente_editar.data_nascimento.strftime('%Y-%m-%d')
+
         form_paciente = paciente_forms.Paciente(instance=paciente_editar)
         form_endereco = endereco_forms.Endereco(instance=paciente_editar.endereco)
         dados_cep = ''
@@ -84,10 +87,15 @@ def editar_paciente(request, id):
 
 def listar_pacientes(request):
     pacientes = paciente_service.listar_pacientes()
-    print(pacientes)
     return render(request, 'paciente/lista_pacientes.html', {'pacientes': pacientes})
 
 
 def listar_paciente_id(request, id):
-    paciente = paciente_service.listar_paciente_id  (id)
+    paciente = paciente_service.listar_paciente_id(id)
     return render(request, 'paciente/lista_paciente.html', {'paciente': paciente})
+
+
+def remover_paciente(request, id):
+    paciente = paciente_service.listar_paciente_id(id)
+    paciente_service.remover_paciente(paciente)
+    return redirect('lista_pacientes')
