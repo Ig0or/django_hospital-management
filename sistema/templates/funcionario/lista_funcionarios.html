@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load filtros %}
+
+{% block title %}
+    Hospital - Lista de Funcionários
+{% endblock title %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Lista de Funcionários</h3>
+        </div>
+        
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Tipo de Funcionário</th>
+                    <th>Ações</th>
+                </tr>
+                {% for funcionario in funcionarios %}
+                    <tr>
+                        <td><a href="#">{{ funcionario.id }}</a></td>
+                        <td>{{ funcionario.nome | title }}</td>
+                        <td>{{ funcionario.data_nascimento | date:'d/m/Y' }}</td>
+                        <td>{{ funcionario.email }}</td>
+                        <td>{{ funcionario.telefone | formatphone }}</td>
+                        <td>{{ funcionario.get_tipo_funcionario_display }}</td>
+                        <td>
+                            <a href="#"><button class="btn btn-primary">Editar</button></a>
+                            <a href="#"><button class="btn btn-danger">Remover</button></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <a href="{% url 'cadastrar_funcionario' %}"><button class="btn btn-primary">Cadastrar Funcionário</button></a>
+
+{% endblock content %}

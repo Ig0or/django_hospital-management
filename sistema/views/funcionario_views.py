@@ -1,4 +1,6 @@
 from django.shortcuts import redirect, render
+
+from sistema.models import Funcionario
 from ..services import cep_service, endereco_service, funcionario_service
 from ..forms import funcionario_forms, endereco_forms
 from ..entidades import endereco, funcionario
@@ -40,4 +42,5 @@ def cadastrar_funcionario(request):
 
 
 def listar_funcionarios(request):
-    funcionarios = 
+    funcionarios = funcionario_service.listar_funcionarios()
+    return render(request, 'funcionario/lista_funcionarios.html', {'funcionarios': funcionarios})

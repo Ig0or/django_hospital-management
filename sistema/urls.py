@@ -9,5 +9,6 @@ urlpatterns = [
     path('lista_pacientes', paciente_views.listar_pacientes, name='lista_pacientes'),
     path('lista_paciente/<int:id>', paciente_views.listar_paciente_id, name='lista_paciente_id'),
     # Métodos Funciário
-    path('cadastrar_funcionario', funcionario_views.cadastrar_funcionario, name='cadastrar_funcionario')
+    path('cadastrar_funcionario', funcionario_views.cadastrar_funcionario, name='cadastrar_funcionario'),
+    path('lista_funcionarios', funcionario_views.listar_funcionarios, name='lista_funcionarios')
 ]
