@@ -36,4 +36,4 @@ def cadastrar_funcionario(request):
         form_funcionario = funcionario_forms.Funcionario()
         form_endereco = endereco_forms.Endereco()
         dados_cep = ''
-    return render(request, 'paciente/form_paciente.html', {'form_funcionario': form_funcionario, 'form_endereco': form_endereco, 'dados_cep': dados_cep})
+    return render(request, 'funcionario/form_funcionario.html', {'form_funcionario': form_funcionario, 'form_endereco': form_endereco, 'dados_cep': dados_cep})

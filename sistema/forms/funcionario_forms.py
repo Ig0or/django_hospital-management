@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from django.forms.widgets import TextInput, DateInput, EmailInput
+from django.forms.widgets import TextInput, DateInput, EmailInput, Select
 from ..models import Funcionario
 
 class Funcionario(ModelForm):
@@ -23,7 +23,7 @@ class Funcionario(ModelForm):
             'telefone': TextInput(
                 attrs={'class': 'form-control'}
             ),
-            'tipo_funcionario': TextInput(
+            'tipo_funcionario': Select(
                 attrs={'class': 'form-control'}
             ),
         }
