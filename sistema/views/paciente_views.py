@@ -97,5 +97,7 @@ def listar_paciente_id(request, id):
 
 def remover_paciente(request, id):
     paciente = paciente_service.listar_paciente_id(id)
+    endereco = paciente.endereco
+    endereco_service.remover_endereco(endereco)
     paciente_service.remover_paciente(paciente)
     return redirect('lista_pacientes')
